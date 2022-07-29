@@ -1,0 +1,53 @@
+<div style="box-shadow: 0px 1px 7px;" class="container mt-2">
+  <h4 class="p-3 bg-light">
+    Fetch Data from JSON Placeholder and show in Table
+  </h4>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row">
+        <table
+          style="box-shadow: 2px 1px 7px"
+          class="table table-striped table-bordered table-hover table-condensed"
+        >
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Title</th>
+              <th scope="col">Body</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="
+                let post of posts
+                  | paginate: { itemsPerPage: 6, currentPage: p }
+              "
+            >
+              <td>{{ post.id }}</td>
+              <td>{{ post.title }}</td>
+              <td>{{ post.body }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div
+        style="font-weight: 700"
+        class="d-flex flex-direction-row justify-content-center"
+      >
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </div>
+
+      <ul class="pagination">
+        <li class="page-item"><a class="page-link" >Previous</a></li>
+        <li class="page-item"><a class="page-link" >1</a></li>
+        <li class="page-item"><a class="page-link" >2</a></li>
+        <li class="page-item"><a class="page-link" >3</a></li>
+        <li class="page-item"><a class="page-link" >Next</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
